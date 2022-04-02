@@ -1,0 +1,12 @@
+main{
+  display:flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-around;
+  background: linear-gradient(180deg, #32C1EE 0%, #EA5CED 40.62%, #E560EE 57.81%, #34C0EE 100%);
+  }
+img{
+    width: 300px;
+    height: 300px;
+}
