@@ -22,18 +22,50 @@ let firestore = firebase.firestore();
 
 const ChatRoom= ()=>{
 
+let navigate = useNavigate()
 const startChat = (e)=>{
 e.preventDefault();
-console.log(btn.current.dataset);
-
+let selectedId = e.target.attributes.getNamedItem("data-tag").value
+firestore.collection('chat_channels').doc(userId+selectedId).set({
+    message:"howdy!",
+    id:userId
+})
+firestore.collection('user_identity').doc(userId).update({
+    inChat:selectedId
+})
+firestore.collection('user_identity').doc(selectedId).update({
+    inChat:userId
+})
 }
-let userRef = firestore.collection('users')
-let query = userRef
-
-let [users] = useCollectionData(query)
 let userId = localStorage.getItem("userId")
-const btn = useRef()
- console.log(users)
+
+let userRef = firestore.collection('users')
+let queryUser = userRef
+let [users] = useCollectionData(queryUser)
+
+setInterval(function() {
+    firestore.collection('user_identity').doc(userId).get().then(
+        (doc)=>{
+            if (doc.exists) {
+                if(doc.data().inChat){
+                    navigate('/chatscreen')
+                }
+              } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+              }
+        }
+    ).catch(function(error) {
+        console.log("Error getting document:", error);
+      });
+       
+  }, 2000);
+ 
+
+
+
+
+
 
 
 return(
@@ -43,7 +75,7 @@ return(
     <h1>Choose your Opponent</h1>
     <>
     {
-       users && users.filter((user)=>user.id!==userId).map((user,idx)=><button data-tag={user.id} ref={btn} className={"light"} key={user.id}  onClick={startChat} >{user.random_name}</button>)
+       users && users.filter((user)=>user.id!==userId).map((user,idx)=><button data-tag={user.id} className={"light"} key={user.id}  onClick={startChat} >{user.random_name}</button>)
     }
     </>
     </main>
