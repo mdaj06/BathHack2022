@@ -71,13 +71,13 @@ return(
 
     <label>
     <p>Full Name</p>
-    <input name="name" onChange={(e)=>setName(e.target.value)} />
+    <input id="small" name="name" onChange={(e)=>setName(e.target.value)} />
     </label>
 
 
     <label>
     <p>Social Media Handle</p>
-    <input name="sm" onChange={(e)=>setSm(e.target.value)} />
+    <input id="small" name="sm" onChange={(e)=>setSm(e.target.value)} />
     </label>
 
 </form>

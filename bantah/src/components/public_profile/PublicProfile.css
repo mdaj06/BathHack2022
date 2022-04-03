@@ -25,3 +25,8 @@ main{
     border-color:#EA5CED ;
     border-width:1px;
     }
+
+    input{
+      width: 600px;
+       height: 100px;
+    }

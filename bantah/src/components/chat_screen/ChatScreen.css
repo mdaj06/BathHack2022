@@ -1,0 +1,46 @@
+
+main{
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    gap:1px;
+    align-items: center;
+    justify-content: space-around;
+    background: linear-gradient(180deg, #32C1EE 0%, #EA5CED 40.62%, #E560EE 57.81%, #34C0EE 100%);
+    }
+  img{
+      width: 300px;
+      height: 300px;
+  }
+  
+  
+    button.light{
+  
+      display:flex;
+      justify-content: center;
+      align-items: center; 
+      background: #FFFFFF;
+      color:#FFFFFF #EA5CED;
+      width: 100px;
+      height: 40px;
+      border: 4px solid #6c5caf;
+      box-sizing: border-box;
+      border-radius: 40px;
+      }
+   input#chat{
+       border-radius: 10px;
+       width: 500px;
+       width: 300px;
+   }
+   div.pink{
+     border-style: dashed;
+     border-color: black;
+     border-width: 2px;
+     color: #EC92EE;
+   }
+   div.blue{
+    border-style: dashed;
+    border-width: 2px;
+    border-color: black;
+    color: #34C0EE;
+  }

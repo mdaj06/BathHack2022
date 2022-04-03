@@ -24,10 +24,14 @@ const ChatRoom= ()=>{
 
 let navigate = useNavigate()
 const startChat = (e)=>{
-e.preventDefault();
+
+ e.preventDefault();
 let selectedId = e.target.attributes.getNamedItem("data-tag").value
+localStorage.setItem("secondUserId",selectedId)
 firestore.collection('chat_channels').doc(userId+selectedId).set({
     message:"howdy!",
+    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+
     id:userId
 })
 firestore.collection('user_identity').doc(userId).update({
@@ -38,6 +42,7 @@ firestore.collection('user_identity').doc(selectedId).update({
 })
 }
 let userId = localStorage.getItem("userId")
+
 
 let userRef = firestore.collection('users')
 let queryUser = userRef
