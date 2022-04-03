@@ -16,13 +16,13 @@ import ChatRoom from "../chat_room/ChatRoom";
 
 
 firebase.initializeApp({
-    apiKey: "AIzaSyDpN1ESW28OKAnlHXDBABGni8BqU2EVOZM",
-    authDomain: "bathhack2022.firebaseapp.com",
-    projectId: "bathhack2022",
-    storageBucket: "bathhack2022.appspot.com",
-    messagingSenderId: "878927659545",
-    appId: "1:878927659545:web:50900f8726a94bdadb2088",
-    measurementId: "G-P0CKCYF2T7"
+    apiKey: "AIzaSyDw7l2X2dg7oscBDbbbhCvtm_uwDJ9lm2E",
+  authDomain: "bathhackathon2022.firebaseapp.com",
+  projectId: "bathhackathon2022",
+  storageBucket: "bathhackathon2022.appspot.com",
+  messagingSenderId: "329403020816",
+  appId: "1:329403020816:web:617344b0e0078993ce7c95",
+  measurementId: "G-1SLVEPE28J"
 })
 
 
