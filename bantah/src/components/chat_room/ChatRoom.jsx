@@ -1,6 +1,6 @@
 
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import{useNavigate} from "react-router-dom"
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -22,22 +22,28 @@ let firestore = firebase.firestore();
 
 const ChatRoom= ()=>{
 
-console.log(firestore)
+const startChat = (e)=>{
+e.preventDefault();
+console.log(btn.current.dataset);
+
+}
 let userRef = firestore.collection('users')
- let query = userRef
+let query = userRef
 
- let [users] = useCollectionData(query)
-
+let [users] = useCollectionData(query)
+let userId = localStorage.getItem("userId")
+const btn = useRef()
  console.log(users)
 
 
 return(
     <main>
 
+
     <h1>Choose your Opponent</h1>
     <>
     {
-       users && users.map((user,idx)=><button className={"light"} key={user.random_name+idx} >{user.random_name}</button>)
+       users && users.filter((user)=>user.id!==userId).map((user,idx)=><button data-tag={user.id} ref={btn} className={"light"} key={user.id}  onClick={startChat} >{user.random_name}</button>)
     }
     </>
     </main>

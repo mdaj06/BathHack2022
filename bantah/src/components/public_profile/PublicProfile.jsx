@@ -43,6 +43,7 @@ const submitDetails = (e)=>{
         
         firestore.collection('users').doc(userId).set({
             random_name:randomName,
+            id:userId
         })
         firestore.collection('user_identity').doc(userId).set({
             name:name,
