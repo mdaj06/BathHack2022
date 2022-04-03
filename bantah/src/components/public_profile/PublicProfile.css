@@ -1,0 +1,27 @@
+main{
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-around;
+    background: linear-gradient(180deg, #32C1EE 0%, #EA5CED 40.62%, #E560EE 57.81%, #34C0EE 100%);
+    }
+  img{
+      width: 300px;
+      height: 300px;
+  }
+  
+  button{
+  
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 48px;
+    
+    background: #EA5CED;
+    box-shadow: 0px 4px 4px #DD2EE9;
+    border-radius: 30px;
+    border-color:#EA5CED ;
+    border-width:1px;
+    }

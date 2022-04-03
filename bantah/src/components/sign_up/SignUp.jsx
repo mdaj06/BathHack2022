@@ -1,8 +1,9 @@
 
+
+import { useContext, useState } from "react";
 import{Navigate} from "react-router-dom"
 import landingScreen from "./landingScreen.png"
 import "./SignUp.css"
-import SolidButton from "../solid_button/SolidButton";
 
 
 import firebase from 'firebase/compat/app';
@@ -10,7 +11,6 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import ChatRoom from "../chat_room/ChatRoom";
 
@@ -25,23 +25,60 @@ firebase.initializeApp({
     measurementId: "G-P0CKCYF2T7"
 })
 
+
+
+
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
-
-
 const SignUp=()=>{
 
-
-const [user]  = useAuthState(auth)  
     
-console.log(user)
+    const [user]  = useAuthState(auth)
+    
+
+    if(user){
+        
+        firestore.collection('user_identity').doc(user.uid).set({
+            name:"",
+            social_media:"",
+            user_registered:false,
+            random_name:"",
+            location:[0,0],
+            inChat:false
+        }).then(()=>{
+            localStorage.setItem("userId", user.uid)
+            
+    }).catch(()=>console.log("encountered an error"))
+    }
+    
+    const signInWithGoogle = () => {
+       
+        console.log("here")
+        const provider = new firebase.auth.GoogleAuthProvider();
+        auth.signInWithPopup(provider);
+        
+        
+      }
+    
+
+      
+    
+    
+
 return(
     
    <main>
         <img src={landingScreen} alt={"logo"} />
         {
-            user?<Navigate replace to="/chat" />:<SolidButton text={"Register"} signIn={signInWithGoogle} />
+            user?
+            <Navigate replace to="/publicprofile"/>
+            
+            :<button onClick={signInWithGoogle}>{"Register"}</button>
+          
+           
+
+        
         }
    </main>
  
@@ -56,9 +93,4 @@ export default SignUp;
 
 
 
-const signInWithGoogle = () => {
-    console.log("here")
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
-  }
 

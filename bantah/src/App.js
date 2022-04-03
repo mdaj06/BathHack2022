@@ -8,6 +8,7 @@ import {
   Route
 } from "react-router-dom"
 import ChatRoom from './components/chat_room/ChatRoom';
+import PublicProfile from './components/public_profile/PublicProfile';
 
 const FirebaseContext = createContext()
 
@@ -18,6 +19,7 @@ function App() {
       <Routes>
       <Route path="/" element={<SignUp/>} />
       <Route path='/chat' element={<ChatRoom/>} />
+      <Route path='/publicprofile' element={<PublicProfile/>} />
       </Routes>
     </Router>
     </FirebaseContext.Provider>
