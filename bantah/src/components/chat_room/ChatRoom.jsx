@@ -53,6 +53,12 @@ setInterval(function() {
         (doc)=>{
             if (doc.exists) {
                 if(doc.data().inChat){
+                    firestore.collection('chat_channels').doc(userId+doc.data().inChat).set({
+                        message:"howdy!",
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    
+                        id:userId
+                    })
                     navigate('/chatscreen')
                 }
               } else {
