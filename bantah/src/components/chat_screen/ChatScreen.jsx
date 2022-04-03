@@ -31,11 +31,11 @@ let chatRef = firestore.collection('chat_channels')
 let queryChat = chatRef
 let [chats] = useCollectionData(queryChat)
 
-useEffect(()=>{
-    return ()=>{
-        localStorage.removeItem("secondUserId")
-    }
-})
+// useEffect(()=>{
+//     return ()=>{
+//         localStorage.removeItem("secondUserId")
+//     }
+// })
 
 console.log(chats)
 
