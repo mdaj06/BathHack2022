@@ -1,6 +1,6 @@
 
 import './ChatScreen.css'
-import { useRef, useState } from "react";
+import { useRef, useState,useEffect } from "react";
 import{useNavigate} from "react-router-dom"
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -31,7 +31,11 @@ let chatRef = firestore.collection('chat_channels')
 let queryChat = chatRef
 let [chats] = useCollectionData(queryChat)
 
-
+useEffect(()=>{
+    return ()=>{
+        localStorage.removeItem("secondUserId")
+    }
+})
 
 console.log(chats)
 
